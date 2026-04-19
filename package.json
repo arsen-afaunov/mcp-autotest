@@ -1,0 +1,21 @@
+{
+  "name": "mcp-autotest",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "extension"
+  ],
+  "scripts": {
+    "build:ext": "cd extension && npm run build",
+    "watch:ext": "cd extension && npm run watch",
+    "typecheck:ext": "cd extension && npm run typecheck",
+    "start:server": "cd server && uv run server.py",
+    "skills:install": "tsx tools/install-skills.ts",
+    "mcp:install": "echo 'TODO: implement mcp:install (uv tool install or shell wrapper)' && exit 1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^6.0.3"
+  }
+}

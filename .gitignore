@@ -1,0 +1,21 @@
+# IDE
+.idea/
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.egg
+
+# uv
+.venv/
+
+# Extension build output
+extension/dist/
+
+# Node.js
+node_modules/
+extension/node_modules/

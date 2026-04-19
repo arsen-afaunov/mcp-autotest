@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "MCP Autotest Bridge",
+  "version": "1.0.0",
+  "description": "Bridge between MCP server and Chrome for web page inspection",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "service_worker.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "MCP Bridge"
+  }
+}

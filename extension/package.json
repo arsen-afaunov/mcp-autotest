@@ -1,0 +1,23 @@
+{
+  "name": "mcp-autotest-extension",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && tsx build.ts",
+    "watch": "tsx build.ts --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chrome": "^0.1.40",
+    "dotenv": "^17.4.2",
+    "esbuild": "^0.28.0"
+  },
+  "dependencies": {
+    "zod": "^4.3.6"
+  }
+}
