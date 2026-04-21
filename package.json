@@ -6,15 +6,21 @@
     "extension"
   ],
   "scripts": {
-    "build:ext": "cd extension && npm run build",
-    "watch:ext": "cd extension && npm run watch",
-    "typecheck:ext": "cd extension && npm run typecheck",
+    "build:extension": "cd extension && npm run build",
+    "watch:extension": "cd extension && npm run watch",
+    "typecheck:extension": "cd extension && npm run typecheck",
     "start:server": "cd server && uv run server.py",
     "skills:install": "tsx tools/install-skills.ts",
-    "mcp:install": "echo 'TODO: implement mcp:install (uv tool install or shell wrapper)' && exit 1"
+    "mcp:install": "echo 'TODO: implement mcp:install (uv tool install or shell wrapper)' && exit 1",
+    "build": "npm run protocol:generate && npm run build:extension",
+    "protocol:generate": "npm run protocol:generate:extension && npm run protocol:generate:server",
+    "protocol:generate:extension": "echo 'TODO: implement TypeScript Zod codegen from protocol/*.json (json-schema-to-zod CLI does not support directories; write a Node script that iterates protocol/ and calls jsonSchemaToZod programmatically)' && exit 1",
+    "protocol:generate:server": "rm -rf server/protocol && uv run datamodel-codegen --input protocol --input-file-type jsonschema --output server/protocol"
   },
   "devDependencies": {
+    "@apidevtools/json-schema-ref-parser": "^15.3.5",
     "@types/node": "^22.0.0",
+    "json-schema-to-zod": "^2.8.1",
     "tsx": "^4.19.0",
     "typescript": "^6.0.3"
   }

@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "run-command",
+  "title": "RunCommand",
+  "type": "object",
+  "required": ["type", "args"],
+  "properties": {
+    "type": { "const": "run" },
+    "args": {
+      "type": "object",
+      "required": ["code"],
+      "properties": {
+        "code": { "type": "string" }
+      }
+    }
+  }
+}

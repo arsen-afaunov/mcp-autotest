@@ -16,6 +16,10 @@ __pycache__/
 # Extension build output
 extension/dist/
 
+# Generated protocol files
+server/protocol/
+extension/src/types/protocol.ts
+
 # Node.js
 node_modules/
 extension/node_modules/

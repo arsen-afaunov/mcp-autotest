@@ -1,0 +1,11 @@
+[project]
+name = "mcp-autotest"
+version = "1.0.0"
+description = "Infrastructure tooling for mcp-autotest"
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "datamodel-code-generator>=0.26.0",
+]

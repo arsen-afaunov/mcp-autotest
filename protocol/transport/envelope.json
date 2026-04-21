@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "envelope",
+  "title": "Envelope",
+  "type": "object",
+  "required": ["id", "body"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Correlation ID for request-response matching"
+    },
+    "body": {
+      "type": "object",
+      "description": "Message payload"
+    }
+  }
+}

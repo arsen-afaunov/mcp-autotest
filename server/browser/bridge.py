@@ -3,22 +3,20 @@ import json
 import uuid
 from collections.abc import Callable, Awaitable
 
-from pydantic import BaseModel
-
-from protocol import CommandResponse, Message
-from transport import Transport
+from transport.base import Transport
+from protocol.transport.envelope import Envelope
 
 
 class BrowserBridge:
     def __init__(self, transport: Transport) -> None:
         self._transport = transport
-        self._pending: dict[str, asyncio.Future[CommandResponse]] = {}
+        self._pending: dict[str, asyncio.Future[dict]] = {}
         transport.on_message(self._on_message)
         transport.on_disconnect(self._on_disconnect)
 
-    async def send_command(self, body: BaseModel, timeout: float = 30.0) -> CommandResponse:
+    async def send_command(self, body: dict, timeout: float = 30.0) -> dict:
         request_id = uuid.uuid4().hex
-        msg = Message(id=request_id, body=body)
+        msg = Envelope(id=request_id, body=body)
         raw = msg.model_dump_json()
 
         future = asyncio.get_event_loop().create_future()
@@ -39,13 +37,13 @@ class BrowserBridge:
             return
 
         try:
-            response = CommandResponse.model_validate(data)
+            envelope = Envelope.model_validate(data)
         except Exception:
             return
 
-        request_id = response.id
+        request_id = envelope.id
         if request_id in self._pending:
-            self._pending.pop(request_id).set_result(response)
+            self._pending.pop(request_id).set_result(envelope.body)
 
     def _on_disconnect(self) -> None:
         for request_id, future in list(self._pending.items()):

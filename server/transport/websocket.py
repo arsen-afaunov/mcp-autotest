@@ -2,7 +2,7 @@ import json
 
 import websockets
 
-from transport import Transport
+from transport.base import Transport
 
 
 class WebSocketTransport(Transport):

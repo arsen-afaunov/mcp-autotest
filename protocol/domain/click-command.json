@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "click-command",
+  "title": "ClickCommand",
+  "type": "object",
+  "required": ["type", "args"],
+  "properties": {
+    "type": { "const": "click" },
+    "args": {
+      "type": "object",
+      "required": ["selector"],
+      "properties": {
+        "selector": { "type": "string" }
+      }
+    }
+  }
+}
